@@ -4,6 +4,9 @@ pipeline {
     stage ('Build') {
       steps {
         // sh 'printenv'
+        
+         withDockerRegistry( [credentialsId: "jenkins-docker-hub", url: ""]) {
+
         sh 'sudo docker build -t keeprich/jenkins-2-dockerhub:""$BUILD_ID"" .'
 
         // the . indicate that the dockerfile is in this directory
@@ -17,7 +20,6 @@ pipeline {
      stage ('Publish to DockerHub') {
       steps {
         // this like allow the integration of jenkins with docker hub
-           withDockerRegistry( [credentialsId: "jenkins-docker-hub", url: ""]) {
           sh 'sudo docker push keeprich/jenkins-2-dockerhub:""$BUILD_ID""'
          }
        }
