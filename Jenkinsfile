@@ -17,12 +17,13 @@ pipeline {
      stage ('Publish to DockerHub') {
       steps {
         // this like allow the integration of jenkins with docker hub
-        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+           withDockerRegistry(registry: [credentialsId: "docker-hub", url: "DOCKER_REGISTRY_URL"]) {
           sh 'docker push keeprich/jenkins-2-dockerhub:""$BUILD_ID""'
          }
        }
      }
 
+// withDockerRegistry(registry: [url: DOCKER_REGISTRY_URL, credentialsId: DOCKER_REGISTRY_CREDENTIALS], toolName: 'docker')
 
     //  publishing to Amazon ECS
     // stage ('Publish to ECR') {
