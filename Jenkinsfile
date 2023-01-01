@@ -5,12 +5,13 @@ pipeline {
       steps {
         // sh 'printenv'
         
-         withDockerRegistry( [credentialsId: "jenkins-docker-hub", url: ""]) {
 
         sh 'sudo docker build -t keeprich/jenkins-2-dockerhub:""$BUILD_ID"" .'
 
         // the . indicate that the dockerfile is in this directory
                 // sh 'docker build -t keeprich/jenkins-2-dockerhub:""$GIT_COMMIT"" .'
+                 withDockerRegistry( [credentialsId: "jenkins-docker-hub", url: ""]) {
+
 
       }
     }
