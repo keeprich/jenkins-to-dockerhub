@@ -4,7 +4,7 @@ pipeline {
     stage ('Build') {
       steps {
         // sh 'printenv'
-        sh 'docker build -t keeprich/jenkins-2-dockerhub:""$BUILD_ID"" .'
+        sh 'sudo docker build -t keeprich/jenkins-2-dockerhub:""$BUILD_ID"" .'
 
         // the . indicate that the dockerfile is in this directory
                 // sh 'docker build -t keeprich/jenkins-2-dockerhub:""$GIT_COMMIT"" .'
