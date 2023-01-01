@@ -18,7 +18,7 @@ pipeline {
       steps {
         // this like allow the integration of jenkins with docker hub
            withDockerRegistry( [credentialsId: "jenkins-docker-hub", url: ""]) {
-          sh 'docker push keeprich/jenkins-2-dockerhub:""$BUILD_ID""'
+          sh 'sudo docker push keeprich/jenkins-2-dockerhub:""$BUILD_ID""'
          }
        }
      }
