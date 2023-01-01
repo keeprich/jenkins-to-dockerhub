@@ -17,7 +17,7 @@ pipeline {
      stage ('Publish to DockerHub') {
       steps {
         // this like allow the integration of jenkins with docker hub
-           withDockerRegistry( [credentialsId: "docker-hub", url: "https://hub.docker.com/"]) {
+           withDockerRegistry( [credentialsId: "docker-hub", url: ""]) {
           sh 'docker push keeprich/jenkins-2-dockerhub:""$BUILD_ID""'
          }
        }
